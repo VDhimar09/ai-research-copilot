@@ -1,10 +1,10 @@
 import asyncio
 
-from services.retrieval import retrieve_documents
+from app.services.retrieval import retrieve_documents
 
 
 async def main():
-    results = await retrieve_documents("Company Z")
+    results = await retrieve_documents("Company A")
 
     for result in results:
         print(result)
