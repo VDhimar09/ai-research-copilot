@@ -1,10 +1,15 @@
+from app.models.evidence import Evidence
+
+
 def generate_final_answer(results: list[dict]) -> str:
     statements = []
 
     for result in results:
-        for evidence in result["evidence"]:
-            content = evidence["content"].strip()
-            source = evidence["source"]
+        evidence_items: list[Evidence] = result["evidence"]
+
+        for evidence in evidence_items:
+            content = evidence.content.strip()
+            source = evidence.source
 
             statements.append(
                 f"According to {source}: {content}"

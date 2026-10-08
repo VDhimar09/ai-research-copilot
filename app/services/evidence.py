@@ -1,11 +1,12 @@
-def build_evidence(documents: list[dict]) -> list[dict]:
-    evidence = []
+from app.models.evidence import Evidence
 
-    for document in documents:
-        evidence.append({
-            "source": document["source"],
-            "content": document["content"],
-            "score": document["score"],
-        })
 
-    return evidence
+def build_evidence(documents: list[dict]) -> list[Evidence]:
+    return [
+        Evidence(
+            source=document["source"],
+            content=document["content"],
+            score=document["score"],
+        )
+        for document in documents
+    ]

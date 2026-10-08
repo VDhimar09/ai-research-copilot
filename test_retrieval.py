@@ -3,11 +3,12 @@ import asyncio
 from app.services.retrieval import retrieve_documents
 
 
-async def main():
-    results = await retrieve_documents("Company A")
+def test_retrieve_documents():
+    results = asyncio.run(
+        retrieve_documents("Company A")
+    )
 
-    for result in results:
-        print(result)
-
-
-asyncio.run(main())
+    assert results
+    assert results[0]["source"]
+    assert results[0]["content"]
+    assert results[0]["score"] > 0
